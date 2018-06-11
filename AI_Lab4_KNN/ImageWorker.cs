@@ -8,13 +8,14 @@ namespace AI_Lab4_KNN
 {
     class ImageWorker
     {
-        public void FindKNN(картинка 1, картинка 2)
+        public void FindKNN(ImageParametrs firstImageParametrs, ImageParametrs secondImageParametrs)
         {
+            /*
             foreach (var pointA in pictureAParametrs)
             {
                 1) найти соседа для пункта А
             }
-            
+            */
         }
     }
 }

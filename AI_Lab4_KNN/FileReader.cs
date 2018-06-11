@@ -7,13 +7,34 @@ namespace AI_Lab4_KNN
     {
         static Random random = new Random((int)DateTime.Now.Ticks + 42);
         
-        public static ImageParametrs ReadParametrs(int playerIndex)
+        public static ImageParametrs ReadParametrs(int pictureIndex)
         {
-            Cell lastMove = null;
-            if (File.Exists(playerIndex == 0 ? Parametrs.PATH_MOVE : Parametrs.PATH_MADE_MOVE))
+            ImageParametrs parametrs = new ImageParametrs();
+
+            string pathToImage = Parametrs.PATH_TO_WORKING_FILES;
+            // first(1) or second(2) image index
+            if (pictureIndex == 1)
             {
-                using (StreamReader reader = File.OpenText(playerIndex == 0 ? Parametrs.PATH_MOVE : Parametrs.PATH_MADE_MOVE))
+                pathToImage += Parametrs.FIRST_IMAGE_NAME;
+            }
+            else
+            {
+                pathToImage += Parametrs.SECOND_IMAGE_NAME;
+            }
+
+            if (File.Exists(pathToImage))
+            {
+                using (StreamReader reader = File.OpenText(pathToImage))
                 {
+                    string fileContent = reader.ReadToEnd();
+
+                    string[] integerStrings = fileContent.Split(new char[] { ' ', '\t', '\r', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                }
+            }
+            return parametrs;
+        }
+
+        /*
                     string fileContent = reader.ReadToEnd();
 
                     string[] integerStrings = fileContent.Split(new char[] { ' ', '\t', '\r', '\n' , ';'}, StringSplitOptions.RemoveEmptyEntries);
@@ -23,10 +44,7 @@ namespace AI_Lab4_KNN
                     int EnemyMoveCellY = int.Parse(integerStrings[Parametrs.MoveCellYIndex]);
 
                     lastMove = new Cell(EnemyMoveCellX, EnemyMoveCellY);
-                }
-                File.Delete(playerIndex == 0 ? Parametrs.PATH_MOVE : Parametrs.PATH_MADE_MOVE);
-            }
-            return lastMove;
-        }
+                
+         */
     }
 }

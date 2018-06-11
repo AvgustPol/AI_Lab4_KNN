@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="ImageParametrs.cs" />
     <Compile Include="ImageWorker.cs" />
+    <Compile Include="Parametrs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
