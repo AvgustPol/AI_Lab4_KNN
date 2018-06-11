@@ -1,6 +1,6 @@
 ﻿namespace AI_Lab4_KNN
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             // 
             // buttonFindKNN
             // 
-            this.buttonFindKNN.Location = new System.Drawing.Point(162, 77);
+            this.buttonFindKNN.Location = new System.Drawing.Point(171, 91);
             this.buttonFindKNN.Name = "buttonFindKNN";
             this.buttonFindKNN.Size = new System.Drawing.Size(301, 195);
             this.buttonFindKNN.TabIndex = 0;
@@ -41,14 +41,14 @@
             this.buttonFindKNN.UseVisualStyleBackColor = true;
             this.buttonFindKNN.Click += new System.EventHandler(this.buttonFindKNN_Click);
             // 
-            // Form1
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 389);
             this.Controls.Add(this.buttonFindKNN);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FormMain";
+            this.Text = "Best form name ever :)";
             this.ResumeLayout(false);
 
         }

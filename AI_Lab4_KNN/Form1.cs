@@ -3,17 +3,17 @@ using System.Windows.Forms;
 
 namespace AI_Lab4_KNN
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
 
         private void buttonFindKNN_Click(object sender, EventArgs e)
         {
-            FileReader.ReadParametrs(1);
-            FileReader.ReadParametrs(2);
+            ImageParametrs firstImageParametrs =  FileReader.ReadParametrs(1);
+            ImageParametrs secondImageParametrs = FileReader.ReadParametrs(2);
         }
     }
 }
