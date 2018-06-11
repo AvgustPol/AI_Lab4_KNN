@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace AI_Lab4_KNN
 {
     public static class FileReader
     {
-        static Random random = new Random((int)DateTime.Now.Ticks + 42);
+        static Random random = new Random((int)DateTime.UtcNow.Ticks + 42);
         
         public static ImageParametrs ReadParametrs(int pictureIndex)
         {
@@ -26,25 +27,36 @@ namespace AI_Lab4_KNN
             {
                 using (StreamReader reader = File.OpenText(pathToImage))
                 {
-                    string fileContent = reader.ReadToEnd();
+                    int pointCounter = 0;
 
-                    string[] integerStrings = fileContent.Split(new char[] { ' ', '\t', '\r', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                    //skip first two integers
+                    reader.ReadLine();
+                    reader.ReadLine();
+
+                    string readLine = reader.ReadLine();
+                
+                    while (readLine != null)
+                    {
+                        string[] splitedParametrs = readLine.Split(new char[] { ' ', '\t', '\r', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        ConvertParametrsFromString(splitedParametrs, pointCounter++, ref parametrs);
+
+                        readLine = reader.ReadLine();
+                    }
                 }
             }
             return parametrs;
         }
-
-        /*
-                    string fileContent = reader.ReadToEnd();
-
-                    string[] integerStrings = fileContent.Split(new char[] { ' ', '\t', '\r', '\n' , ';'}, StringSplitOptions.RemoveEmptyEntries);
-                    
-                    Parametrs.NumberOfGameMoves = int.Parse(integerStrings[Parametrs.GameTimeIndex]);
-                    int EnemyMoveCellX = int.Parse(integerStrings[Parametrs.MoveCellXIndex]);
-                    int EnemyMoveCellY = int.Parse(integerStrings[Parametrs.MoveCellYIndex]);
-
-                    lastMove = new Cell(EnemyMoveCellX, EnemyMoveCellY);
-                
-         */
+        
+        private static void ConvertParametrsFromString(string[] splitedParametrs, int pointIndex,ref ImageParametrs parametrs)
+        {
+            List<int> tmpParametrs = new List<int>();
+            
+            for (int i = 5; i < Parametrs.NUMBER_OF_PARAMETRS + 5; i++)
+            {
+                tmpParametrs.Add(Int32.Parse(splitedParametrs[i]));
+            }
+            parametrs.AddPointParametr(pointIndex, tmpParametrs);
+        }
     }
 }

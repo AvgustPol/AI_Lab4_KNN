@@ -15,5 +15,10 @@ namespace AI_Lab4_KNN
             // Parametrs.NUMBER_OF_PARAMETR
             attributes = new Dictionary<int, List<int>>();
         }
+
+        public void AddPointParametr(int pointIndex, List<int> parametrs)
+        {
+            attributes.Add(pointIndex, parametrs);
+        }
     }
 }
