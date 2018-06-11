@@ -18,12 +18,12 @@ namespace AI_Lab4_KNN
             */
         }
 
-        private double FindEuclideanDistance(List<int> x, List<int> y)
+        private double FindEuclideanDistance(List<int> firstPointAttributes, List<int> secondPointAttributes)
         {
             double sum = 0;
             for (int i = 0; i < Parametrs.NUMBER_OF_PARAMETRS; i++)
             {
-                sum += (x[i] - y[i]) * (x[i] - y[i]);
+                sum += (firstPointAttributes[i] - secondPointAttributes[i]) * (firstPointAttributes[i] - secondPointAttributes[i]);
             }
             return Math.Sqrt(sum);
         }
