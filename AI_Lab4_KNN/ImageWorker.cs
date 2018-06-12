@@ -10,30 +10,27 @@ namespace AI_Lab4_KNN
     {
         public void FindKNN(ImageParametrs firstImageParametrs, ImageParametrs secondImageParametrs)
         {
-            foreach (var pointIndex in firstImageParametrs.attributes.Keys)
+            foreach (var pointIndex in firstImageParametrs.allPointAttributes.Keys)
             {
-                FindNearestNeighbour(pointIndex, secondImageParametrs);
+                FindNearestNeighbour(pointIndex, ref firstImageParametrs, secondImageParametrs);
             }
         }
 
-        private Tuple<int, int> FindNearestNeighbour(int firstPointIndex, ImageParametrs firstImageParametrs, ImageParametrs secondImageParametrs)
+        private void FindNearestNeighbour(int firstPointIndex, ref ImageParametrs firstImageParametrs, ImageParametrs secondImageParametrs)
         {
             int smallestDistanceID = 0;
             double smallestDistance = double.MaxValue;
 
-            foreach (var secondPointIndex in secondImageParametrs.attributes.Keys)
+            foreach (var secondPointIndex in secondImageParametrs.allPointAttributes.Keys)
             {
-                double foundDistance = FindEuclideanDistance(firstImageParametrs.attributes[firstPointIndex], secondImageParametrs.attributes[secondPointIndex]);
+                double foundDistance = FindEuclideanDistance(firstImageParametrs.allPointAttributes[firstPointIndex].attributes, secondImageParametrs.allPointAttributes[secondPointIndex].attributes);
                 if (smallestDistance > foundDistance)
                 {
                     smallestDistance = foundDistance;
                     smallestDistanceID = secondPointIndex;
+                    firstImageParametrs.allPointAttributes[firstPointIndex].SetOtherInageIndex(secondPointIndex);
                 }
             }
-
-            firstImageParametrs.pairIndexes[firstPointIndex].Value = secondPointIndex;
-
-            return new Tuple<int, int>(firstPointIndex, );
         }
 
         private double FindEuclideanDistance(List<int> firstPointAttributes, List<int> secondPointAttributes)
