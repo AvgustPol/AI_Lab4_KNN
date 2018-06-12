@@ -10,12 +10,30 @@ namespace AI_Lab4_KNN
     {
         public void FindKNN(ImageParametrs firstImageParametrs, ImageParametrs secondImageParametrs)
         {
-            /*
-            foreach (var pointA in pictureAParametrs)
+            foreach (var pointIndex in firstImageParametrs.attributes.Keys)
             {
-                1) найти соседа для пункта А
+                FindNearestNeighbour(pointIndex, secondImageParametrs);
             }
-            */
+        }
+
+        private Tuple<int, int> FindNearestNeighbour(int firstPointIndex, ImageParametrs firstImageParametrs, ImageParametrs secondImageParametrs)
+        {
+            int smallestDistanceID = 0;
+            double smallestDistance = double.MaxValue;
+
+            foreach (var secondPointIndex in secondImageParametrs.attributes.Keys)
+            {
+                double foundDistance = FindEuclideanDistance(firstImageParametrs.attributes[firstPointIndex], secondImageParametrs.attributes[secondPointIndex]);
+                if (smallestDistance > foundDistance)
+                {
+                    smallestDistance = foundDistance;
+                    smallestDistanceID = secondPointIndex;
+                }
+            }
+
+            firstImageParametrs.pairIndexes[firstPointIndex].Value = secondPointIndex;
+
+            return new Tuple<int, int>(firstPointIndex, );
         }
 
         private double FindEuclideanDistance(List<int> firstPointAttributes, List<int> secondPointAttributes)
