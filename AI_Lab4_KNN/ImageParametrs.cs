@@ -16,13 +16,10 @@ namespace AI_Lab4_KNN
             allPointAttributes = new Dictionary<int, PointAtributes>();
         }
 
-        public void AddPointParametr(int pointIndex, List<int> parametrs)
+        public void AddPointParametr(int pointIndex, List<int> parametrs, string pointX, string pointY)
         {
-            allPointAttributes.Add(pointIndex, new PointAtributes(parametrs));
+            allPointAttributes.Add(pointIndex, new PointAtributes(parametrs, pointX , pointY));
         }
 
-        public void SetOtherImageIndex(int thisIndex, int otherIndex)
-        {
-        }
     }
 }

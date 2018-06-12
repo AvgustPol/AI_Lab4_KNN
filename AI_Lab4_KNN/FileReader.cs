@@ -48,7 +48,7 @@ namespace AI_Lab4_KNN
             return parametrs;
         }
         
-        private static void ConvertParametrsFromString(string[] splitedParametrs, int pointIndex,ref ImageParametrs parametrs)
+        private static void ConvertParametrsFromString(string[] splitedParametrs, int pointIndex, ref ImageParametrs parametrs)
         {
             List<int> tmpParametrs = new List<int>();
             
@@ -56,7 +56,7 @@ namespace AI_Lab4_KNN
             {
                 tmpParametrs.Add(Int32.Parse(splitedParametrs[i]));
             }
-            parametrs.AddPointParametr(pointIndex, tmpParametrs);
+            parametrs.AddPointParametr(pointIndex, tmpParametrs, splitedParametrs[0], splitedParametrs[1] );
         }
     }
 }

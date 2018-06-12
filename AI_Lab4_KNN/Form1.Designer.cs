@@ -33,7 +33,7 @@
             // 
             // buttonFindKNN
             // 
-            this.buttonFindKNN.Location = new System.Drawing.Point(171, 91);
+            this.buttonFindKNN.Location = new System.Drawing.Point(172, 148);
             this.buttonFindKNN.Name = "buttonFindKNN";
             this.buttonFindKNN.Size = new System.Drawing.Size(301, 195);
             this.buttonFindKNN.TabIndex = 0;
